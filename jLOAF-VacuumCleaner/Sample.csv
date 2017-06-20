@@ -1,0 +1,15 @@
+Performance Measure,Mean,Standard Deviation
+Recall LEFT,1.0,0.0
+F1 UP,1.0,0.0
+Recall DOWN,0.9979879,0.002012074
+F1 DOWN,0.99899197,0.0010080338
+F1 RIGHT,1.0,0.0
+F1 LEFT,0.9375,0.0625
+Precision UP,1.0,0.0
+Classification Accuracy,0.999,9.999871E-4
+Precision DOWN,1.0,0.0
+Global F1,0.984123,0.015877008
+Recall RIGHT,1.0,0.0
+Precision RIGHT,1.0,0.0
+Precision LEFT,0.8888889,0.111111104
+Recall UP,1.0,0.0
