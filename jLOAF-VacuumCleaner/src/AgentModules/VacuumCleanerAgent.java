@@ -11,6 +11,7 @@ import org.jLOAF.inputs.AtomicInput;
 import org.jLOAF.inputs.ComplexInput;
 import org.jLOAF.inputs.Input;
 import org.jLOAF.reasoning.BayesianReasoner;
+import org.jLOAF.reasoning.DynamicBayesianReasoner;
 import org.jLOAF.reasoning.SimpleKNN;
 import org.jLOAF.reasoning.TBReasoning;
 import org.jLOAF.sim.SimilarityMetricStrategy;
@@ -55,7 +56,7 @@ public class VacuumCleanerAgent extends Agent{
 	@Override
 	public void train(CaseBase casebase) {
 		this.cb = casebase;
-		this.r = new BayesianReasoner(casebase);
+		this.r = new DynamicBayesianReasoner(casebase);
 	}
 	
 	
