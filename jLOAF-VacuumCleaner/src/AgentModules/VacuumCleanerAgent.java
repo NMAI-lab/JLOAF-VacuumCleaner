@@ -5,10 +5,13 @@ import org.jLOAF.MotorControl;
 import org.jLOAF.Perception;
 import org.jLOAF.Reasoning;
 import org.jLOAF.action.Action;
+import org.jLOAF.action.AtomicAction;
 import org.jLOAF.casebase.CaseBase;
 import org.jLOAF.inputs.AtomicInput;
 import org.jLOAF.inputs.ComplexInput;
 import org.jLOAF.inputs.Input;
+import org.jLOAF.reasoning.BayesianReasoner;
+import org.jLOAF.reasoning.DynamicBayesianReasoner;
 import org.jLOAF.reasoning.SimpleKNN;
 import org.jLOAF.reasoning.TBReasoning;
 import org.jLOAF.sim.SimilarityMetricStrategy;
@@ -39,9 +42,6 @@ public class VacuumCleanerAgent extends Agent{
 		this.mc = new VacuumCleanerMotorControl();
 		
 		this.p = new VacuumCleanerPerception();
-		
-	
-		
 	
 	}
 	
@@ -49,13 +49,14 @@ public class VacuumCleanerAgent extends Agent{
 
 	@Override
 	public Action run(Input input) {
-		return (VacuumCleanerAction) this.r.selectAction(input);
+		AtomicAction a = (AtomicAction) this.r.selectAction(input);
+		return (VacuumCleanerAction) a;
 	}
 
 	@Override
 	public void train(CaseBase casebase) {
 		this.cb = casebase;
-		this.r = new TBReasoning(casebase);
+		this.r = new DynamicBayesianReasoner(casebase);
 	}
 	
 	

@@ -22,8 +22,8 @@ public class LogFile2CaseBaseStateBased extends LogFile2CaseBase{
 		StateBasedVacuumCleanerInput svci = new StateBasedVacuumCleanerInput(VacuumCleanerInput.NAME,vacumStrategy);
 		for(int i=0;i<entry.length-1;i=i+2){
 			ComplexInput ci =Inputs.values()[i/2].setFeat(complexStrategy);
-			 AtomicInput a1 = new AtomicInput("Distance",new Feature(entry[i]-1),atomicStrategy);
-			 AtomicInput a2 = new AtomicInput("Object",new Feature(entry[i+1]-1),atomicStrategy);
+			 AtomicInput a1 = new AtomicInput("Distance"+i,new Feature(entry[i]-1),atomicStrategy);
+			 AtomicInput a2 = new AtomicInput("Object"+i,new Feature(entry[i+1]-1),atomicStrategy);
 			 ci.add(a1);
 			 ci.add(a2);
 			 vci.add(ci);
