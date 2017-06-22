@@ -23,14 +23,12 @@ public class PerformanceTest extends PerformanceEvaluator {
 	public static void main(String[] args){
 		
 		
-		String matchType = "default";
-		String [] cbname = {"vc3.txt","vc8.txt"};
+		String [] filenames = {"jLOAF-VacuumCleaner/trace-m0-WallFollowerAgent.txt","jLOAF-VacuumCleaner/trace-m1-WallFollowerAgent.txt"};
 		
 		PerformanceTest pt = new PerformanceTest();
 		try {
-			pt.PerformanceEvaluatorMethod(cbname,null);
+			pt.PerformanceEvaluatorMethod(filenames,null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -44,14 +42,14 @@ public class PerformanceTest extends PerformanceEvaluator {
 
 	@Override
 	public String[] createArrayOfCasebaseNames(String[] filenames) throws IOException {
-		LogFile2CaseBaseStateBased lfcb = new LogFile2CaseBaseStateBased();
+		LogFile2CaseBase lfcb = new LogFile2CaseBase();
 		String[] outputs = new String[filenames.length];
 		
 		String outputFile ="vcb";
 		int i=0;
 		
 		for(String s:filenames){
-			outputs[i]=lfcb.parseLogFile(s,outputFile+i);
+			outputs[i]=lfcb.parseLogFile(s,outputFile+i+".cb");
 					i++;
 		}
 		
