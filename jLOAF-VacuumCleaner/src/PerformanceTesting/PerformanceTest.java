@@ -8,7 +8,7 @@ import org.jLOAF.performance.PerformanceEvaluator;
 
 import AgentModules.VacuumCleanerAgent;
 import CaseBaseCreation.LogFile2CaseBase;
-import CaseBaseCreation.LogFile2CaseBaseStateBased;
+
 
 
 /***
@@ -28,7 +28,7 @@ public class PerformanceTest extends PerformanceEvaluator {
 		
 		PerformanceTest pt = new PerformanceTest();
 		try {
-			pt.PerformanceEvaluatorMethod(cbname,null,"vcOutput.txt");
+			pt.PerformanceEvaluatorMethod(cbname,null,"vcOutput.txt",null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class PerformanceTest extends PerformanceEvaluator {
 
 	@Override
 	public String[] createArrayOfCasebaseNames(String[] filenames) throws IOException {
-		LogFile2CaseBaseStateBased lfcb = new LogFile2CaseBaseStateBased();
+		LogFile2CaseBase lfcb = new LogFile2CaseBase();
 		String[] outputs = new String[filenames.length];
 		
 		String outputFile ="vcb";
