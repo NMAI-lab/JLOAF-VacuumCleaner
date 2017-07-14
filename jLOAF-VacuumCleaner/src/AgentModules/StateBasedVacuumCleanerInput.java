@@ -16,7 +16,7 @@ public class StateBasedVacuumCleanerInput extends StateBasedInput{
 	
 	public StateBasedVacuumCleanerInput(String name, StateBasedSimilarity sim) {
 		super(name, sim);	
-		
+		//lol
 	}
 	
 
