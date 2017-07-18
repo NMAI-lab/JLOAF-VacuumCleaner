@@ -11,18 +11,24 @@ public class TestingConfigVacuumCleaner {
 	public static void main(String[] args){
 		TestingConfig tc = new TestingConfig();
 		
+		
 		String [] filenames = tc.getFileNames(args);
+		
 		String output_filename = tc.getOutputFileName(args);
 		
 		
 		CaseBaseFilter ft =tc.createCaseBaseFilter(args);
+		
 		tc.changeSimilarity(args);
+		
 		String r = tc.getReasoner(args);
+		String stSim =tc.getStSim(args);
+		String cpSim = tc.getCpSim(args);
+		
 		PerformanceTest pt = new PerformanceTest(); 
 		
-		
 		try {
-			pt.PerformanceEvaluatorMethod(filenames, ft, output_filename,r);
+			pt.PerformanceEvaluatorMethod(filenames, ft, output_filename,r,stSim,cpSim);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

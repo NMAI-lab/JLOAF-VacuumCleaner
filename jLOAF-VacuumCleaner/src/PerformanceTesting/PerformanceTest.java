@@ -28,7 +28,7 @@ public class PerformanceTest extends PerformanceEvaluator {
 		PerformanceTest pt = new PerformanceTest();
 		try {
 
-			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput.txt",null);
+			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput.txt",null,null,null);
 
 		} catch (IOException e) {
 			e.printStackTrace();
