@@ -14,9 +14,12 @@ import org.jLOAF.inputs.ComplexInput;
 import org.jLOAF.inputs.Feature;
 import org.jLOAF.sim.SimilarityMetricStrategy;
 import org.jLOAF.sim.StateBasedSimilarity;
+import org.jLOAF.sim.StateBased.KOrderedSimilarity;
 import org.jLOAF.sim.StateBased.OrderedSimilarity;
 import org.jLOAF.sim.atomic.EuclideanDistance;
 import org.jLOAF.sim.complex.Mean;
+import org.jLOAF.sim.complex.WeightedMean;
+import org.jLOAF.weights.SimilarityWeights;
 
 import AgentModules.VacuumCleanerAction;
 import AgentModules.VacuumCleanerAction.Actions;
@@ -33,8 +36,8 @@ public class LogFile2CaseBase {
 	
 	protected SimilarityMetricStrategy atomicStrategy = new EuclideanDistance();
 	protected SimilarityMetricStrategy complexStrategy = new Mean();
-	protected SimilarityMetricStrategy vacumStrategy = new Mean();
-	protected StateBasedSimilarity stateBasedStrategy = new OrderedSimilarity();
+	protected SimilarityMetricStrategy vacumStrategy = new WeightedMean(new SimilarityWeights());
+	protected StateBasedSimilarity stateBasedStrategy = new KOrderedSimilarity(1);
 	
 	
 	/*
