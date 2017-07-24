@@ -100,12 +100,16 @@ public class LogFile2CaseBase {
 	public void createCase(CaseBase cb2, double[] entry) {
 		VacuumCleanerAction act= new VacuumCleanerAction(Actions.values()[(int)entry[8]-1].getAction());
 		VacuumCleanerInput vci = new VacuumCleanerInput(VacuumCleanerInput.NAME,vacumStrategy);
-		for(int i=0;i<entry.length-1;i=i+2){
-			ComplexInput ci =Inputs.values()[i/2].setFeat(complexStrategy);
-			 AtomicInput a1 = new AtomicInput("Distance"+i,new Feature(entry[i]-1),atomicStrategy);
-			 AtomicInput a2 = new AtomicInput("Object"+i,new Feature(entry[i+1]-1),atomicStrategy);
+		for(int i=0;i<entry.length-1;i=i+4){
+			ComplexInput ci =Inputs.values()[i/4].setFeat(complexStrategy);
+			 AtomicInput a1 = new AtomicInput("up",new Feature(entry[i]-1),atomicStrategy);
+			 AtomicInput a2 = new AtomicInput("down",new Feature(entry[i+1]-1),atomicStrategy);
+			 AtomicInput a3 = new AtomicInput("left",new Feature(entry[i+2]-1),atomicStrategy);
+			 AtomicInput a4 = new AtomicInput("right",new Feature(entry[i+3]-1),atomicStrategy);
 			 ci.add(a1);
 			 ci.add(a2);
+			 ci.add(a3);
+			 ci.add(a4);
 			 vci.add(ci);
 			//System.out.println(vci.getChildNames().size());
 		}
