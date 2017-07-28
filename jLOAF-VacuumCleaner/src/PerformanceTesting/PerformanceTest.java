@@ -25,13 +25,13 @@ public class PerformanceTest extends PerformanceEvaluator {
 	public static void main(String[] args){
 		
 		
-		String [] filenames = {"trace-m0-WallFollowerAgent.txt","trace-m1-WallFollowerAgent.txt"};
+		String [] filenames = {"trace-m0-MultipleSequenceAgent.txt","trace-m1-MultipleSequenceAgent.txt"};
 		
 		PerformanceTest pt = new PerformanceTest();
 		CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
 		try {
 
-			pt.PerformanceEvaluatorMethod(filenames,ft,"vcOutput.txt",null,null,null);
+			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput4.csv","weightedKNN","weighted",null);
 
 		} catch (IOException e) {
 			e.printStackTrace();

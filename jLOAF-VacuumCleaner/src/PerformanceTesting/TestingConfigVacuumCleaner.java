@@ -18,9 +18,7 @@ public class TestingConfigVacuumCleaner {
 		
 		
 		CaseBaseFilter ft =tc.createCaseBaseFilter(args);
-		
-		
-		
+			
 		String r = tc.getReasoner(args);
 		String stSim =tc.getStSim(args);
 		String cpSim = tc.getCpSim(args);
