@@ -3,6 +3,7 @@ package CaseBaseCreation;
 import org.jLOAF.inputs.AtomicInput;
 import org.jLOAF.inputs.ComplexInput;
 import org.jLOAF.inputs.Feature;
+import org.jLOAF.sim.ComplexSimilarityMetricStrategy;
 import org.jLOAF.sim.SimilarityMetricStrategy;
 
 	public enum Inputs {
@@ -18,7 +19,7 @@ import org.jLOAF.sim.SimilarityMetricStrategy;
 		 }
 		 
 		
-		 public ComplexInput setFeat(SimilarityMetricStrategy sim){
+		 public ComplexInput setFeat(ComplexSimilarityMetricStrategy sim){
 			 ComplexInput ci= new ComplexInput(name,sim);
 			 
 			
