@@ -12,6 +12,8 @@ import org.jLOAF.casebase.CaseBase;
 import org.jLOAF.inputs.AtomicInput;
 import org.jLOAF.inputs.ComplexInput;
 import org.jLOAF.inputs.Feature;
+import org.jLOAF.sim.AtomicSimilarityMetricStrategy;
+import org.jLOAF.sim.ComplexSimilarityMetricStrategy;
 import org.jLOAF.sim.SimilarityMetricStrategy;
 import org.jLOAF.sim.StateBasedSimilarity;
 import org.jLOAF.sim.StateBased.KOrderedSimilarity;
@@ -34,10 +36,23 @@ import AgentModules.VacuumCleanerInput;
  */
 public class LogFile2CaseBase {
 	
+<<<<<<< HEAD
+<<<<<<< HEAD
+	protected AtomicSimilarityMetricStrategy atomicStrategy = new EuclideanDistance();
+	protected ComplexSimilarityMetricStrategy complexStrategy = new Mean();
+	protected ComplexSimilarityMetricStrategy vacumStrategy = new Mean();
+	protected StateBasedSimilarity stateBasedStrategy = new OrderedSimilarity();
+=======
 	protected SimilarityMetricStrategy atomicStrategy = new EuclideanDistance();
 	protected SimilarityMetricStrategy complexStrategy = new Mean();
 	protected SimilarityMetricStrategy vacumStrategy = new WeightedMean(new SimilarityWeights());
+=======
+	protected AtomicSimilarityMetricStrategy atomicStrategy = new EuclideanDistance();
+	protected ComplexSimilarityMetricStrategy complexStrategy = new Mean();
+	protected ComplexSimilarityMetricStrategy vacumStrategy = new WeightedMean(new SimilarityWeights());
+>>>>>>> b885ed28f4fe9277625a84875b589520d4fb0a14
 	protected StateBasedSimilarity stateBasedStrategy = new KOrderedSimilarity(1);
+>>>>>>> ec92234eb734353e24bef312dbd2c9e6be6a81eb
 	
 	
 	/*
