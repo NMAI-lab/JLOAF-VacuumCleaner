@@ -103,21 +103,28 @@ public class LogFile2CaseBase {
 	 * @param entry an array of double values represent the parameters of the actions and the inputs
 	 */
 	public void createCase(CaseBase cb2, double[] entry) {
-		VacuumCleanerAction act= new VacuumCleanerAction(Actions.values()[(int)entry[8]-1].getAction());
+		VacuumCleanerAction act= new VacuumCleanerAction(String.valueOf(entry[8]));
 		VacuumCleanerInput vci = new VacuumCleanerInput(VacuumCleanerInput.NAME,vacumStrategy);
-		for(int i=0;i<entry.length-1;i=i+4){
-			ComplexInput ci =Inputs.values()[i/4].setFeat(complexStrategy);
-			 AtomicInput a1 = new AtomicInput("up",new Feature(entry[i]-1),atomicStrategy);
-			 AtomicInput a2 = new AtomicInput("down",new Feature(entry[i+1]-1),atomicStrategy);
-			 AtomicInput a3 = new AtomicInput("left",new Feature(entry[i+2]-1),atomicStrategy);
-			 AtomicInput a4 = new AtomicInput("right",new Feature(entry[i+3]-1),atomicStrategy);
-			 ci.add(a1);
-			 ci.add(a2);
-			 ci.add(a3);
-			 ci.add(a4);
-			 vci.add(ci);
+		
+			//ComplexInput ci =new ComplexInput("Input",complexStrategy);
+			 AtomicInput a1 = new AtomicInput("Oup",new Feature(entry[0]),atomicStrategy);
+			 AtomicInput a2 = new AtomicInput("Dup",new Feature(entry[1]),atomicStrategy);
+			 AtomicInput a3 = new AtomicInput("Oright",new Feature(entry[2]),atomicStrategy);
+			 AtomicInput a4 = new AtomicInput("Dright",new Feature(entry[3]),atomicStrategy);
+			 AtomicInput a5 = new AtomicInput("Odown",new Feature(entry[4]),atomicStrategy);
+			 AtomicInput a6 = new AtomicInput("Ddown",new Feature(entry[5]),atomicStrategy);
+			 AtomicInput a7 = new AtomicInput("Oleft",new Feature(entry[6]),atomicStrategy);
+			 AtomicInput a8 = new AtomicInput("Dleft",new Feature(entry[7]),atomicStrategy);
+			 vci.add(a1);
+			 vci.add(a2);
+			 vci.add(a3);
+			 vci.add(a4);
+			 vci.add(a5);
+			 vci.add(a6);
+			 vci.add(a7);
+			 vci.add(a8);
+			 //vci.add(ci);
 			//System.out.println(vci.getChildNames().size());
-		}
 		Case c =new Case(vci,act);
 		
 		cb2.createThenAdd(vci,act,stateBasedStrategy);
