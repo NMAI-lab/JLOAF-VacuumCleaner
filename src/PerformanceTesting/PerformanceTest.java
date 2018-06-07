@@ -31,7 +31,7 @@ public class PerformanceTest extends PerformanceEvaluator {
 		CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
 		try {
 			
-			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput.txt","weightedKNN",null,null);
+			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput.txt","weightedKNN","kordered_r",null);
 
 
 		} catch (IOException e) {
