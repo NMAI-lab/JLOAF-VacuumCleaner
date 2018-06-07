@@ -26,12 +26,12 @@ public class PerformanceTest extends PerformanceEvaluator {
 		
 		String [] filenames = {"Traces/trace-m0-WallFollowerAgent.txt","Traces/trace-m1-WallFollowerAgent.txt"};
 
-		
+		String output_filename = "Results/CBR,weightedKNN,none,none,k_ordered_r,none,.csv";
 		PerformanceTest pt = new PerformanceTest();
 		CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
 		try {
 			
-			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput.txt","weightedKNN","kordered_r",null);
+			pt.PerformanceEvaluatorMethod(filenames,null,output_filename,"weightedKNN","kordered_r",null);
 
 
 		} catch (IOException e) {
