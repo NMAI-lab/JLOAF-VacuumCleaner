@@ -7,7 +7,7 @@ import org.jLOAF.sim.ComplexSimilarityMetricStrategy;
 import org.jLOAF.sim.SimilarityMetricStrategy;
 
 	public enum Inputs {
-	UP("UpDirectionInput"),RIGHT("RIGHTDirectionInput"),DOWN("DOWNDirectionInput"),LEFT("LEFTDirectionInput");
+	Wall("Wall"),Dirt("Dirt");
 		private String name;
 		
 		 Inputs(String cp){

@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.jLOAF.Agent;
 import org.jLOAF.casebase.CaseBase;
 import org.jLOAF.performance.PerformanceEvaluator;
+import org.jLOAF.preprocessing.filter.CaseBaseFilter;
+import org.jLOAF.preprocessing.filter.featureSelection.HillClimbingFeatureSelection;
 
 import AgentModules.VacuumCleanerAgent;
 import CaseBaseCreation.LogFile2CaseBase;
@@ -23,12 +25,22 @@ public class PerformanceTest extends PerformanceEvaluator {
 	public static void main(String[] args){
 		
 		
+<<<<<<< HEAD
 		String [] filenames = {"trace-m0-WallFollowerAgent.txt","trace-m1-WallFollowerAgent.txt", "trace-m0-WallFollowerAgent.txt"};
+=======
+		String [] filenames = {"trace-m0-WallFollowerAgent.txt","trace-m1-WallFollowerAgent.txt"};
+>>>>>>> ec92234eb734353e24bef312dbd2c9e6be6a81eb
 		
 		PerformanceTest pt = new PerformanceTest();
+		CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
 		try {
+<<<<<<< HEAD
 			
 			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput.txt","weightedKNN",null,null);
+=======
+
+			pt.PerformanceEvaluatorMethod(filenames,ft,"vcOutput.txt",null,null,null);
+>>>>>>> ec92234eb734353e24bef312dbd2c9e6be6a81eb
 
 		} catch (IOException e) {
 			e.printStackTrace();
