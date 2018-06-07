@@ -16,13 +16,12 @@ public class TestingConfigVacuumCleaner {
 		
 		
 		CaseBaseFilter ft =tc.createCaseBaseFilter(args);
-		tc.changeSimilarity(args);
+		//tc.changeSimilarity(args);
 		String r = tc.getReasoner(args);
 		PerformanceTest pt = new PerformanceTest(); 
 		
-		
 		try {
-			pt.PerformanceEvaluatorMethod(filenames, ft, output_filename,r);
+			pt.PerformanceEvaluatorMethod(filenames, ft, output_filename,r,null,null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

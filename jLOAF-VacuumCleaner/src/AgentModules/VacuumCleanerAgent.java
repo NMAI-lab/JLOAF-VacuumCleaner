@@ -53,15 +53,6 @@ public class VacuumCleanerAgent extends Agent{
 		return (VacuumCleanerAction) a;
 	}
 
-	@Override
-	public void train(CaseBase casebase) {
-		this.cb = casebase;
-
-		if(this.r==null){
-		this.r = new TBReasoning(casebase);
-		}
-
-	}
 	
 	
 

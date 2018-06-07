@@ -23,12 +23,12 @@ public class PerformanceTest extends PerformanceEvaluator {
 	public static void main(String[] args){
 		
 		
-		String [] filenames = {"jLOAF-VacuumCleaner/trace-m0-WallFollowerAgent.txt","jLOAF-VacuumCleaner/trace-m1-WallFollowerAgent.txt"};
+		String [] filenames = {"trace-m0-WallFollowerAgent.txt","trace-m1-WallFollowerAgent.txt", "trace-m0-WallFollowerAgent.txt"};
 		
 		PerformanceTest pt = new PerformanceTest();
 		try {
-
-			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput.txt",null);
+			
+			pt.PerformanceEvaluatorMethod(filenames,null,"vcOutput.txt","weightedKNN",null,null);
 
 		} catch (IOException e) {
 			e.printStackTrace();
