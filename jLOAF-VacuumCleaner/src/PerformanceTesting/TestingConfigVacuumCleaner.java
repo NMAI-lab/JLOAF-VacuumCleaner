@@ -19,12 +19,16 @@ public class TestingConfigVacuumCleaner {
 		
 		CaseBaseFilter ft =tc.createCaseBaseFilter(args);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		//tc.changeSimilarity(args);
 =======
 		
 		
 		
 >>>>>>> ec92234eb734353e24bef312dbd2c9e6be6a81eb
+=======
+			
+>>>>>>> b885ed28f4fe9277625a84875b589520d4fb0a14
 		String r = tc.getReasoner(args);
 		String stSim =tc.getStSim(args);
 		String cpSim = tc.getCpSim(args);
