@@ -24,14 +24,16 @@ public class PerformanceTest extends PerformanceEvaluator {
 	
 	public static void main(String[] args){
 		
-		String [] filenames = {"Traces/trace-m0-WallFollowerAgent.txt","Traces/trace-m1-WallFollowerAgent.txt"};
-
-		String output_filename = "Results/CBR,weightedKNN,none,none,k_ordered_r,none,.csv";
+		//String [] filenames = {"Traces/trace-m0-WallFollowerAgent.txt","Traces/trace-m1-WallFollowerAgent.txt"};
+		String [] filenames = {"Traces/fxdseq/trace-m0-FixedSequenceAgent.txt","Traces/fxdseq/trace-m1-FixedSequenceAgent.txt"};
+		
+		String output_filename = "Results/CBR,weightedKNN,none,none,k_ordered,none,.csv";
+		//String output_filename = "Results/CBR_weightedKNN_kordered_r_fxdseq_trace-m0-FixedSequenceAgent.csv";
 		PerformanceTest pt = new PerformanceTest();
 		CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
 		try {
 			
-			pt.PerformanceEvaluatorMethod(filenames,null,output_filename,"weightedKNN","kordered_r",null);
+			pt.PerformanceEvaluatorMethod(filenames,null,output_filename,"weightedKNN","kordered",null);
 
 
 		} catch (IOException e) {
