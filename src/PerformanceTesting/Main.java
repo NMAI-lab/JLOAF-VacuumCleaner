@@ -1,11 +1,11 @@
 package PerformanceTesting;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import PerformanceTesting.PerformanceTest;
-import sun.management.counter.Units;
 
 public class Main {
 	/**
@@ -32,23 +32,44 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		//Example
-		//String[] files = {"Trace/trace-m0-WallFollowerAgent.txt", "Trace/trace-m1-WallFollowerAgent.txt"};
-		//Units[] units = Units.KORDERED;
+		//String[] files = {"Traces/trace-m0-WallFollowerAgent.txt", "Traces/trace-m1-WallFollowerAgent.txt", "Traces/trace-m2-WallFollowerAgent.txt"};
+		//Units[] units = {Units.KORDERED};
 		//evaluate(files, units);
+		evaluateAllFiles("Traces/zz/", Units.values());
 	}
 	
 	/**
 	 * This will evaluateAllFiles in the given folder with the given TestType. Edit this code to your liking
 	 */
-	public static void evaluateAllFiles(String folder, TestType testType, Units units) {
-		File[] files = new File(folder).listFiles();
+	public static void evaluateAllFiles(String folder, TestType testType, Units ... units) {
 		ArrayList<String> filesToTest = new ArrayList<>();
+		File[] files = listFiles(folder, ".txt");
+		
 		for(File f: files) {
 			if (getTestType(f.getName()).equals(testType)) {
 				filesToTest.add(f.getPath());
 			}
-			evaluate(filesToTest.toArray(new String[] {}), units);
 		}
+
+		evaluate(filesToTest.toArray(new String[] {}), "1-6atonce", units);
+	}
+	
+	/**
+	 * This will evaluateAllFiles. The testType is the testType of the first file inside this folder
+	 */
+	public static void evaluateAllFiles(String folder, Units ... units) {
+		evaluateAllFiles(folder, getTestType(listFiles(folder, ".txt")[0].getPath()), units);
+	}
+	
+	/**
+	 * List the files of a given extension in a folder
+	 */
+	public static File[] listFiles(String folder, String ext) {
+		return new File(folder).listFiles(new FilenameFilter() {
+		    public boolean accept(File dir, String name) {
+		        return name.toLowerCase().endsWith(ext);
+		    }
+		});
 	}
 	
 	/**
