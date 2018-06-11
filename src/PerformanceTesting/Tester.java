@@ -8,12 +8,19 @@ import java.util.Arrays;
 public class Tester {
 	//quick reference to the options
 
-	public static void main(String args[]) {
-		File[] files = new File("Traces").listFiles();
-		ArrayList<String> filesToTest = new ArrayList<>();
-		for(File f: files) {
-				filesToTest.add(f.getPath());
+	
+	public enum TestType {
+		FixedSequenceAgent, MultipleSequenceAgent, WallFollowerAgent, ZigZagAgent;
+		public String getFolder() {
+			System.out.print(this);
+			if (this.equals(TestType.FixedSequenceAgent)) {
+				return "hi";
+						
+			}
+			return null;
 		}
-		System.out.print(Arrays.toString(filesToTest.toArray(new String[] {})));
+	}
+	public static void main(String args[]) {
+		System.out.print(TestType.FixedSequenceAgent.getFolder());
 	}
 }

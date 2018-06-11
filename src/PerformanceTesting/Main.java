@@ -23,7 +23,16 @@ public class Main {
 	}
 	
 	public enum TestType {
-		FixedSequenceAgent, MultipleSequenceAgent, WallFollowerAgent, ZigZagAgent
+		FixedSequenceAgent, MultipleSequenceAgent, WallFollowerAgent, ZigZagAgent;
+		public String getFolder() {
+			if (this.equals(TestType.FixedSequenceAgent)){
+				return "fxdseq/";
+			} else if (this.equals(TestType.ZigZagAgent)) {
+				return "zz/";
+			} else {
+				return "";
+			}
+		}
 	}
 	
 	/**
@@ -31,35 +40,39 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//Example
-		//String[] files = {"Traces/trace-m0-WallFollowerAgent.txt", "Traces/trace-m1-WallFollowerAgent.txt", "Traces/trace-m2-WallFollowerAgent.txt"};
-		//Units[] units = {Units.KORDERED};
-		//evaluate(files, units);
-		evaluateAllFiles("Traces/zz/", Units.values());
+		
+		
+		int mapNum1 = 1;
+		int mapNum2 = 2;
+		TestType testType = TestType.FixedSequenceAgent;
+		String folder = testType.getFolder();
+		String[] files = {"Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".txt", "Traces/" + folder + "/trace-m" + mapNum2 + "-" + testType + ".txt"};
+		//Units[] units = {Units.KORDERED, Units.KORDERED};
+		evaluate(files, Units.values());
 	}
 	
 	/**
 	 * This will evaluateAllFiles in the given folder with the given TestType. Edit this code to your liking
 	 */
-	public static void evaluateAllFiles(String folder, TestType testType, Units ... units) {
-		ArrayList<String> filesToTest = new ArrayList<>();
-		File[] files = listFiles(folder, ".txt");
-		
-		for(File f: files) {
-			if (getTestType(f.getName()).equals(testType)) {
-				filesToTest.add(f.getPath());
-			}
-		}
-
-		evaluate(filesToTest.toArray(new String[] {}), "1-6atonce", units);
-	}
+	//public static void evaluateAllFiles(String folder, TestType testType, Units ... units) {
+	//	ArrayList<String> filesToTest = new ArrayList<>();
+	//	File[] files = listFiles(folder, ".txt");
+	//	
+	//	for(File f: files) {
+	//		if (getTestType(f.getName()).equals(testType)) {
+	//			filesToTest.add(f.getPath());
+	//		}
+	//	}
+	//
+	//	evaluate(filesToTest.toArray(new String[] {}), units);
+	//}
 	
 	/**
 	 * This will evaluateAllFiles. The testType is the testType of the first file inside this folder
 	 */
-	public static void evaluateAllFiles(String folder, Units ... units) {
-		evaluateAllFiles(folder, getTestType(listFiles(folder, ".txt")[0].getPath()), units);
-	}
+	//public static void evaluateAllFiles(String folder, Units ... units) {
+	//	evaluateAllFiles(folder, getTestType(listFiles(folder, ".txt")[0].getPath()), units);
+	//}
 	
 	/**
 	 * List the files of a given extension in a folder
@@ -94,7 +107,7 @@ public class Main {
 	public static void evaluate(String[] filenames,  String comment, Units ... units){		
 		for (Units u: units) {
 			try {
-				String baseString = getTestType(filenames[0])+ " - CBR,weightedKNN,none,none," + u + ",none";
+				String baseString = getTestType(filenames[0])+ " - CBR,weightedKNN,none,none," + u + ",none - m";
 				String descriptor; 
 				if(comment != null) {
 					descriptor = comment + " - " + baseString;
@@ -119,5 +132,12 @@ public class Main {
 	 */
 	public static TestType getTestType(String f) {
 		return TestType.valueOf(f.substring(f.indexOf("-", f.indexOf("trace-") + 6) + 1, f.lastIndexOf(".")));
+	}
+	/** 
+	 * Assuming the file format is Trace/trace-m#-****.txt, this method will parse the string to get the #, which is referred as the map number
+	 * @param filename - the file with the given format
+	 */
+	public static String getMapNumber(String f) {
+		return f.substring(f.indexOf("trace-m") + 6 , f.lastIndexOf("."));
 	}
 }
