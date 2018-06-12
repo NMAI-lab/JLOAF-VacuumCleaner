@@ -46,7 +46,7 @@ public class Main {
 		int mapNum1 = 0;
 		int mapNum2 = 1;
 		TestType testType = TestType.ZigZagAgent;
-		Units[] units = {Units.KORDERED};
+		Units[] units = {Units.KUNORDERED};
 		Reasoners[] reasoners = {Reasoners.TB};
 		
 		
@@ -55,29 +55,7 @@ public class Main {
 		String[] files = {"Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".txt", "Traces/" + folder + "/trace-m" + mapNum2 + "-" + testType + ".txt"};
 		evaluate(files, reasoners, units);
 	}
-	
-	/**
-	 * This will evaluateAllFiles in the given folder with the given TestType. Edit this code to your liking
-	 */
-	//public static void evaluateAllFiles(String folder, TestType testType, Units ... units) {
-	//	ArrayList<String> filesToTest = new ArrayList<>();
-	//	File[] files = listFiles(folder, ".txt");
-	//	
-	//	for(File f: files) {
-	//		if (getTestType(f.getName()).equals(testType)) {
-	//			filesToTest.add(f.getPath());
-	//		}
-	//	}
-	//
-	//	evaluate(filesToTest.toArray(new String[] {}), units);
-	//}
-	
-	/**
-	 * This will evaluateAllFiles. The testType is the testType of the first file inside this folder
-	 */
-	//public static void evaluateAllFiles(String folder, Units ... units) {
-	//	evaluateAllFiles(folder, getTestType(listFiles(folder, ".txt")[0].getPath()), units);
-	//}
+
 	
 	/**
 	 * List the files of a given extension in a folder
@@ -91,35 +69,19 @@ public class Main {
 	}
 	
 	/**
-	 * See Evaluate(String[], String, Units[]) 
-	 * @param filenames
-	 * @param units
-	 */
-	public static void evaluate(String[] filenames, Reasoners[] reasoners, Units[] units){
-		evaluate(filenames, null, reasoners, units);
-	}
-	
-	/**
 	 * This will do a performance test with the given files.
 	 * This will output files in the Statistics and Results folders
 	 * 
 	 * @param filenames - Files in the String names referenced from the base directory. These files are used to compare against each other
-	 * @param comment - (Optional) A comment you would like to add. This is used for naming the output files
 	 * @param units - The Units to use
 	 * 
 	 * 
 	 */
-	public static void evaluate(String[] filenames,  String comment, Reasoners[] reasoners, Units[] units){
+	public static void evaluate(String[] filenames, Reasoners[] reasoners, Units[] units){
 		for (Reasoners r: reasoners) {
 			for (Units u: units) {
 				try {
-					String baseString = getTestType(filenames[0])+ " - CBR," + r + ",none,none," + u + ",none - m";
-					String descriptor; 
-					if(comment != null) {
-						descriptor = comment + " - " + baseString;
-					} else {
-						descriptor = baseString;
-					}
+					String descriptor = getTestType(filenames[0])+ " - CBR," + r + ",none,none," + u + ",none - m";
 					
 					PerformanceTest pt = new PerformanceTest();
 					//CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
