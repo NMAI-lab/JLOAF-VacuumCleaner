@@ -41,11 +41,10 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		//map map testType
+		//edit with your personal settings here
 		int mapNum1 = 0;
 		int mapNum2 = 1;
-		TestType testType = TestType.ZigZagAgent;
+		TestType testType = TestType.ZigZagAgent; 
 		Units[] units = {Units.KUNORDERED};
 		Reasoners[] reasoners = {Reasoners.TB};
 		
@@ -55,6 +54,7 @@ public class Main {
 		String[] files = {"Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".txt", "Traces/" + folder + "/trace-m" + mapNum2 + "-" + testType + ".txt"};
 		evaluate(files, reasoners, units);
 	}
+	
 
 	
 	/**
