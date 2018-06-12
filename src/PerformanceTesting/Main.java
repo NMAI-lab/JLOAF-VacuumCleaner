@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.jLOAF.reasoning.Reasoners;
 
 import PerformanceTesting.PerformanceTest;
 
@@ -41,14 +42,18 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
+		//map map testType
+		int mapNum1 = 0;
+		int mapNum2 = 1;
+		TestType testType = TestType.ZigZagAgent;
+		Units[] units = {Units.KORDERED};
+		Reasoners[] reasoners = {Reasoners.TB};
 		
-		int mapNum1 = 1;
-		int mapNum2 = 2;
-		TestType testType = TestType.FixedSequenceAgent;
+		
+		//do not change
 		String folder = testType.getFolder();
 		String[] files = {"Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".txt", "Traces/" + folder + "/trace-m" + mapNum2 + "-" + testType + ".txt"};
-		//Units[] units = {Units.KORDERED, Units.KORDERED};
-		evaluate(files, Units.values());
+		evaluate(files, reasoners, units);
 	}
 	
 	/**
@@ -90,8 +95,8 @@ public class Main {
 	 * @param filenames
 	 * @param units
 	 */
-	public static void evaluate(String[] filenames,  Units ... units){
-		evaluate(filenames, null, units);
+	public static void evaluate(String[] filenames, Reasoners[] reasoners, Units[] units){
+		evaluate(filenames, null, reasoners, units);
 	}
 	
 	/**
@@ -104,23 +109,25 @@ public class Main {
 	 * 
 	 * 
 	 */
-	public static void evaluate(String[] filenames,  String comment, Units ... units){		
-		for (Units u: units) {
-			try {
-				String baseString = getTestType(filenames[0])+ " - CBR,weightedKNN,none,none," + u + ",none - m";
-				String descriptor; 
-				if(comment != null) {
-					descriptor = comment + " - " + baseString;
-				} else {
-					descriptor = baseString;
-				}
-				
-				PerformanceTest pt = new PerformanceTest();
-				//CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
-				pt.PerformanceEvaluatorMethod(filenames,null,descriptor,"weightedKNN",u.toString(),null);
+	public static void evaluate(String[] filenames,  String comment, Reasoners[] reasoners, Units[] units){
+		for (Reasoners r: reasoners) {
+			for (Units u: units) {
+				try {
+					String baseString = getTestType(filenames[0])+ " - CBR," + r + ",none,none," + u + ",none - m";
+					String descriptor; 
+					if(comment != null) {
+						descriptor = comment + " - " + baseString;
+					} else {
+						descriptor = baseString;
+					}
+					
+					PerformanceTest pt = new PerformanceTest();
+					//CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
+					pt.PerformanceEvaluatorMethod(filenames,null,descriptor,r.toString(),u.toString(),null);
 
-			} catch (IOException e) {
-				e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
