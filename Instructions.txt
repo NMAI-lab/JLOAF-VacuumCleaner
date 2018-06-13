@@ -21,8 +21,7 @@ e.g. ZigZagAgent - CBR,TB,none,none,kordered_r,none - m1
 If you are looking at the txt file, the file name will also be prefixed with PredictedTraceFile.
 
 How to Simulate the txt File
-Download the LFO-Simulator and put it in the same workspace as jLOAF-VacuumCleaner (Note that the vacuum project must be named exactly jLOAF-VacuumCleaner for this project to work. 
-You may not have trailing spaces). Then go to the src/lfo/experiments/TraceVisualizerFromTrace.java main method.
+Download the LFO-Simulator.
 Change the txtFile and xmlFile variable to the name of the textFile/xmlFile you want to visualize. The xml files are in the traces folder, and the path you put in for the xml file push 
 be starting from the Traces.
 e.g. For Traces/zz/trace-m0-ZigZagAgent.txt, you must write zz/trace-m0-ZigZagAgent.txt. The TestType Agent and the map number must be the same for both the xml file and the txt file 

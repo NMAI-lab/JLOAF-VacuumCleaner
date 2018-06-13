@@ -44,9 +44,9 @@ public class Main {
 		//edit with your personal settings here
 		int mapNum1 = 0;
 		int mapNum2 = 1;
-		TestType testType = TestType.ZigZagAgent; 
-		Units[] units = {Units.KUNORDERED};
-		Reasoners[] reasoners = {Reasoners.TB};
+		TestType testType = TestType.FixedSequenceAgent; 
+		Units[] units = {Units.KORDERED};
+		Reasoners[] reasoners = {Reasoners.weightedKNN};
 		
 		
 		//do not change
@@ -81,7 +81,7 @@ public class Main {
 		for (Reasoners r: reasoners) {
 			for (Units u: units) {
 				try {
-					String descriptor = getTestType(filenames[0])+ " - CBR," + r + ",none,none," + u + ",none - m";
+					String descriptor = getTestType(filenames[0])+ " - " + r + "_" + u + "_compared-maps:" + mapNums[0] + "," + mapNums[1] + " - m";
 					
 					PerformanceTest pt = new PerformanceTest();
 					//CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
@@ -100,6 +100,7 @@ public class Main {
 	 * @param filename - the file with the given format
 	 */
 	public static TestType getTestType(String f) {
+		System.out.println("Agent Type " + (f.substring(f.indexOf("-", f.indexOf("trace-") + 6) + 1, f.lastIndexOf("."))));
 		return TestType.valueOf(f.substring(f.indexOf("-", f.indexOf("trace-") + 6) + 1, f.lastIndexOf(".")));
 	}
 	/** 
