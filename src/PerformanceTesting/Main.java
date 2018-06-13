@@ -52,7 +52,7 @@ public class Main {
 		//do not change
 		String folder = testType.getFolder();
 		String[] files = {"Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".txt", "Traces/" + folder + "/trace-m" + mapNum2 + "-" + testType + ".txt"};
-		evaluate(files, reasoners, units);
+		evaluate(files, reasoners, units, new int[]{mapNum1, mapNum2});
 	}
 	
 
@@ -77,7 +77,7 @@ public class Main {
 	 * 
 	 * 
 	 */
-	public static void evaluate(String[] filenames, Reasoners[] reasoners, Units[] units){
+	public static void evaluate(String[] filenames, Reasoners[] reasoners, Units[] units, int mapNums[]){
 		for (Reasoners r: reasoners) {
 			for (Units u: units) {
 				try {
@@ -85,7 +85,7 @@ public class Main {
 					
 					PerformanceTest pt = new PerformanceTest();
 					//CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
-					pt.PerformanceEvaluatorMethod(filenames,null,descriptor,r.toString(),u.toString(),null);
+					pt.PerformanceEvaluatorMethod(filenames,null,descriptor,r.toString(),u.toString(),null, mapNums);
 
 				} catch (IOException e) {
 					e.printStackTrace();
