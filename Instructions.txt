@@ -2,14 +2,14 @@ How to Run jLOAF-VacuumCleaner
 
 To run this project with your personal settings go to src/PerformanceTesting/Main.java and scroll to the main method.
 Here there are 5 variables you can edit:
-int mapNum1, mapNum2 - These represent the two maps you choose to compare against each other. Each map is represented with an unique integer
 
+int maps[] - List maps you want to test. Each permutation of 2 maps will be tested in this program.
 The next three data types are enumerators. If you don't know how to use an enumerator, read the next few lines:
   1. You must prefix the value you want with the DataType name, e.g. for a Integer DataType, you must write Integer.value.
   2. If you are using an IDE, you can type in the DataType. (DataType with a .) to see all the possible values the variable can take
   3. If you want an array of all the possible values to use, use the method DataType.values()
 TestType testType - This represents which TestAgent you want to use.
-Units[] - Choose one or several units you want to use. Since it must be an Array, put all you elements in between {} brackets.
+StSims[] - Choose one or several units you want to use. Since it must be an Array, put all you elements in between {} brackets.
 Reasoners[] - Choose one or several Reasoners to use. 
 
 After editing your variables, run the program. You will get a result file for every possible Unit and Reasoner combination you put into the program in the statistics and results directory. 
@@ -21,12 +21,14 @@ e.g. ZigZagAgent - CBR,TB,none,none,kordered_r,none - m1
 If you are looking at the txt file, the file name will also be prefixed with PredictedTraceFile.
 
 How to Simulate the txt File
-Download the LFO-Simulator.
+Download the LFO-Simulator. This must be in the same working directory as jLOAF-VacuumCleaner. The jLOAF-VacuumCleaner must be named jLOAF-VacuumCleaner exactly or you will get a FileNotFoundException.
 Change the txtFile and xmlFile variable to the name of the textFile/xmlFile you want to visualize. The xml files are in the traces folder, and the path you put in for the xml file push 
 be starting from the Traces.
 e.g. For Traces/zz/trace-m0-ZigZagAgent.txt, you must write zz/trace-m0-ZigZagAgent.txt. The TestType Agent and the map number must be the same for both the xml file and the txt file 
 for the visualization to make sense.
 Press run.
+
+Also note that your XML files and Statistic files that you can use are also printed in the console when you run the jLOAF-VacuumCleaner project.
 
 
 
