@@ -15,11 +15,7 @@ Reasoners[] - Choose one or several Reasoners to use.
 After editing your variables, run the program. You will get a result file for every possible Unit and Reasoner combination you put into the program in the statistics and results directory. 
 The results directory holds cvs files which stores a summary of your results, while the statistics directory holds txt files to be used to visualize what has happened.
 
-Your file names are stored as such:
-TestType - CBR,reasoner,none,none,unit,none - mapnum
-e.g. ZigZagAgent - CBR,TB,none,none,kordered_r,none - m1
-If you are looking at the txt file, the file name will also be prefixed with PredictedTraceFile.
-
+Note: if it takes too long to write stats to file, there is a database error. Try again later
 How to Simulate the txt File
 Download the LFO-Simulator. This must be in the same working directory as jLOAF-VacuumCleaner. The jLOAF-VacuumCleaner must be named jLOAF-VacuumCleaner exactly or you will get a FileNotFoundException.
 Change the txtFile and xmlFile variable to the name of the textFile/xmlFile you want to visualize. The xml files are in the traces folder, and the path you put in for the xml file push 

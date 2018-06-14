@@ -31,9 +31,9 @@ public class Main {
 	public static void main(String[] args) {
 		//edit with your personal settings here
 		int[] maps = {0, 1, 2, 3, 4, 5};
-		TestType testType = TestType.FixedSequenceAgent; 
-		StSims[] units = {StSims.kordered};
-		Reasoners[] reasoners = {Reasoners.weightedKNN};
+		TestType testType = TestType.ZigZagAgent; 
+		StSims[] units = {StSims.kordered, StSims.kordered_r, StSims.kunordered};
+		Reasoners[] reasoners = {Reasoners.weightedKNN,Reasoners.TB};
 		
 		
 		//do not change
