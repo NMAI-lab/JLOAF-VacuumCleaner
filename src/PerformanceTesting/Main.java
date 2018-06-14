@@ -30,21 +30,15 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		//edit with your personal settings here
-		int mapNum1 = 0;
-		int mapNum2 = 1;
+		int[] maps = {0, 1, 2, 3, 4, 5};
 		TestType testType = TestType.FixedSequenceAgent; 
 		StSims[] units = {StSims.kordered};
 		Reasoners[] reasoners = {Reasoners.weightedKNN};
 		
 		
 		//do not change
-		String folder = testType.getFolder();
-		String[] files = {"Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".txt", "Traces/" + folder + "/trace-m" + mapNum2 + "-" + testType + ".txt"};
-		System.out.println("XML files to test with LFO-Simulator: " + "Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".xml" + " and/or " + "Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".xml");
-		evaluate(files, reasoners, units, new int[]{mapNum1, mapNum2});
+		evaluate(testType, reasoners, units, maps);
 	}
-	
-
 	
 	/**
 	 * List the files of a given extension in a folder
@@ -66,19 +60,41 @@ public class Main {
 	 * 
 	 * 
 	 */
-	public static void evaluate(String[] filenames, Reasoners[] reasoners, StSims[] units, int mapNums[]){
+	public static void evaluate(String[] filenames, Reasoners[] reasoners, StSims[] units, int map1, int map2){
 		for (Reasoners r: reasoners) {
 			for (StSims u: units) {
 				try {
-					String descriptor = getTestType(filenames[0])+ " - " + r + "_" + u + "_compared-maps:" + mapNums[0] + "," + mapNums[1] + " - m";
+					String descriptor = getTestType(filenames[0])+ " - " + r + "_" + u + "_compared-maps:" + map1 + "," + map2;
 					
 					PerformanceTest pt = new PerformanceTest();
 					//CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
-					pt.PerformanceEvaluatorMethod(filenames,null,descriptor,r.toString(),u.toString(),null, mapNums);
+					pt.PerformanceEvaluatorMethod(filenames,null,descriptor,r.toString(),u.toString(),null, new int[] {map1, map2});
 
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			}
+		}
+	}
+	
+	/**
+	 * Compare every possible arrangement of maps into the other evaulate function given the array of maps
+	 * @param testType
+	 * @param reasoners
+	 * @param units
+	 * @param maps
+	 */
+	public static void evaluate(TestType t, Reasoners[] reasoners, StSims[] units, int[] maps) {
+		//get every possibility of 2 files
+		for (int i = 0; i < maps.length; i++) {
+			for (int j = i + 1; j < maps.length; j++) {
+				//get the file names and send to evaulate
+				String folder = t.getFolder();
+				String file0 = folder + "trace-m" + maps[i] + "-" + t;
+				String file1 = folder + "trace-m" + maps[j] + "-" + t;
+				String[] files = {"Traces/" + file0 + ".txt", "Traces/" + file1 + ".txt"};
+				System.out.println("XML files to test with LFO-Simulator: " + file0 + ".xml" + " and/or " + file1 + ".xml");
+				evaluate(files, reasoners, units, maps[i], maps[j]);
 			}
 		}
 	}
