@@ -31,7 +31,7 @@ public class Main {
 	public static void main(String[] args) {
 		//edit with your personal settings here
 		int[] maps = {0, 1, 2, 3, 4, 5};
-		TestType testType = TestType.ZigZagAgent; 
+		TestType[] testType = {TestType.ZigZagAgent}; 
 		StSims[] units = {StSims.kordered, StSims.kordered_r, StSims.kunordered};
 		Reasoners[] reasoners = {Reasoners.weightedKNN,Reasoners.TB};
 		
@@ -84,17 +84,19 @@ public class Main {
 	 * @param units
 	 * @param maps
 	 */
-	public static void evaluate(TestType t, Reasoners[] reasoners, StSims[] units, int[] maps) {
+	public static void evaluate(TestType[] testType, Reasoners[] reasoners, StSims[] units, int[] maps) {
 		//get every possibility of 2 files
 		for (int i = 0; i < maps.length; i++) {
 			for (int j = i + 1; j < maps.length; j++) {
-				//get the file names and send to evaulate
-				String folder = t.getFolder();
-				String file0 = folder + "trace-m" + maps[i] + "-" + t;
-				String file1 = folder + "trace-m" + maps[j] + "-" + t;
-				String[] files = {"Traces/" + file0 + ".txt", "Traces/" + file1 + ".txt"};
-				System.out.println("XML files to test with LFO-Simulator: " + file0 + ".xml" + " and/or " + file1 + ".xml");
-				evaluate(files, reasoners, units, maps[i], maps[j]);
+				for (TestType t: testType) {
+					//get the file names and send to evaulate
+					String folder = t.getFolder();
+					String file0 = folder + "trace-m" + maps[i] + "-" + t;
+					String file1 = folder + "trace-m" + maps[j] + "-" + t;
+					String[] files = {"Traces/" + file0 + ".txt", "Traces/" + file1 + ".txt"};
+					System.out.println("XML files to test with LFO-Simulator: " + file0 + ".xml" + " and/or " + file1 + ".xml");
+					evaluate(files, reasoners, units, maps[i], maps[j]);
+				}
 			}
 		}
 	}
