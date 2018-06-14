@@ -64,7 +64,7 @@ public class Main {
 		for (Reasoners r: reasoners) {
 			for (StSims u: units) {
 				try {
-					String descriptor = getTestType(filenames[0])+ " - " + r + "_" + u + "_compared-maps:" + map1 + "," + map2;
+					String descriptor = getTestType(filenames[0])+ " - " + r + "_" + u + "_compared-maps " + map1 + "," + map2;
 					
 					PerformanceTest pt = new PerformanceTest();
 					//CaseBaseFilter ft = new HillClimbingFeatureSelection(null);
