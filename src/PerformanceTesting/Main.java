@@ -100,7 +100,6 @@ public class Main {
 	 * @param filename - the file with the given format
 	 */
 	public static TestType getTestType(String f) {
-		System.out.println("Agent Type " + (f.substring(f.indexOf("-", f.indexOf("trace-") + 6) + 1, f.lastIndexOf("."))));
 		return TestType.valueOf(f.substring(f.indexOf("-", f.indexOf("trace-") + 6) + 1, f.lastIndexOf(".")));
 	}
 	/** 
