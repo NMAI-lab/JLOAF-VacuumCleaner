@@ -5,23 +5,11 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.jLOAF.reasoning.Reasoners;
+import org.jLOAF.sim.StateBased.StSims;
 
 import PerformanceTesting.PerformanceTest;
 
 public class Main {
-	/**
-	 * These are the options you can for the units
-	 * @author frankliu197
-	 *
-	 */
-	public enum Units {
-		KORDERED_R, KORDERED, KUNORDERED;
-		
-		@Override
-		public String toString() {
-			return super.toString().toLowerCase();
-		}
-	}
 	
 	public enum TestType {
 		FixedSequenceAgent, MultipleSequenceAgent, WallFollowerAgent, ZigZagAgent;
@@ -45,14 +33,14 @@ public class Main {
 		int mapNum1 = 0;
 		int mapNum2 = 1;
 		TestType testType = TestType.FixedSequenceAgent; 
-		Units[] units = {Units.KORDERED};
+		StSims[] units = {StSims.kordered};
 		Reasoners[] reasoners = {Reasoners.weightedKNN};
 		
 		
 		//do not change
 		String folder = testType.getFolder();
 		String[] files = {"Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".txt", "Traces/" + folder + "/trace-m" + mapNum2 + "-" + testType + ".txt"};
-		System.out.println("XML files to test with LFO-Simulator: " + "Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".xml" + " \nand/or " + "Traces/" + folder + "trace-m" + mapNum2 + "-" + testType + ".xml");
+		System.out.println("XML files to test with LFO-Simulator: " + "Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".xml" + " and/or " + "Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".xml");
 		evaluate(files, reasoners, units, new int[]{mapNum1, mapNum2});
 	}
 	
@@ -78,9 +66,9 @@ public class Main {
 	 * 
 	 * 
 	 */
-	public static void evaluate(String[] filenames, Reasoners[] reasoners, Units[] units, int mapNums[]){
+	public static void evaluate(String[] filenames, Reasoners[] reasoners, StSims[] units, int mapNums[]){
 		for (Reasoners r: reasoners) {
-			for (Units u: units) {
+			for (StSims u: units) {
 				try {
 					String descriptor = getTestType(filenames[0])+ " - " + r + "_" + u + "_compared-maps:" + mapNums[0] + "," + mapNums[1] + " - m";
 					
