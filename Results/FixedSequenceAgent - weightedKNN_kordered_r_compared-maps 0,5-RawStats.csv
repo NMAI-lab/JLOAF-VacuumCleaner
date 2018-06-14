@@ -1,0 +1,15 @@
+Performance Measure,Cycle0,Cycle1
+Classification_Accuracy,0.65,0.65
+Recall_1.0,1.0,1.0
+Recall_2.0,0.6,0.6
+Recall_3.0,0.4,0.4
+Recall_4.0,0.6,0.6
+Precision_2.0,0.6,0.6
+Precision_1.0,0.71428573,0.71428573
+Precision_4.0,0.5,0.5
+Precision_3.0,1.0,1.0
+F1_1.0,0.8333334,0.8333334
+F1_3.0,0.5714286,0.5714286
+F1_2.0,0.6,0.6
+F1_4.0,0.54545456,0.54545456
+Global_F1,0.6375541,0.6375541
