@@ -1,0 +1,19 @@
+Performance Measure,Mean,Standard Deviation
+Classification_Accuracy,0.99950004,7.070977E-4
+Recall_1.0,1.0,0.0
+Recall_2.0,1.0,0.0
+Recall_3.0,0.9987469,0.0017721907
+Recall_4.0,1.0,0.0
+Precision_2.0,0.99875,0.0017677653
+Precision_1.0,1.0,0.0
+Precision_4.0,1.0,0.0
+Precision_3.0,1.0,0.0
+F1_1.0,1.0,0.0
+F1_3.0,0.99937266,8.8719116E-4
+F1_2.0,0.9993743,8.849574E-4
+F1_4.0,1.0,0.0
+Global_F1,0.9996867,4.4304767E-4
+
+,Cycle0,Cycle1
+Filter Time (Seconds),0.0,0.0,
+Test Time (Minutes),0.019083333333333334,0.019233333333333335,
