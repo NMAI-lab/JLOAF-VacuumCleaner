@@ -1,6 +1,5 @@
-/bin/
+bin/
 .classpath
 .project
 .settings
-C:\Users\sacha\Documents\Github\jLOAF-ObstacleAvoidance\Results\tb_tests.db
 *.cb

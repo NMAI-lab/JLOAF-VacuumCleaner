@@ -52,6 +52,7 @@ public class Main {
 		//do not change
 		String folder = testType.getFolder();
 		String[] files = {"Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".txt", "Traces/" + folder + "/trace-m" + mapNum2 + "-" + testType + ".txt"};
+		System.out.println("XML files to test with LFO-Simulator: " + "Traces/" + folder + "trace-m" + mapNum1 + "-" + testType + ".xml" + " \nand/or " + "Traces/" + folder + "trace-m" + mapNum2 + "-" + testType + ".xml");
 		evaluate(files, reasoners, units, new int[]{mapNum1, mapNum2});
 	}
 	
